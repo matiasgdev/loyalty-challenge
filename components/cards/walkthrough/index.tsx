@@ -16,7 +16,7 @@ interface Props {
 const WalkthroughCard: React.FC<Props> = (props) => {
   const { title, description, illustrationUrl, rotation, id } = props;
   return (
-    <WalkthroughCardContainer rotation={rotation} id={id}>
+    <WalkthroughCardContainer rotation={rotation} cardId={id}>
       <IllustrationCardContainer>
         <CardImage src={illustrationUrl} alt={title.concat(' Walkthrough')} />
       </IllustrationCardContainer>

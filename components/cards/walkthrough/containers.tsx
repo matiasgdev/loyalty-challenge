@@ -13,14 +13,14 @@ const cardPositions = {
   },
 };
 
-export const WalkthroughCardContainer = styled.div<{ rotation?: string; id: number }>`
+export const WalkthroughCardContainer = styled.div<{ rotation?: string; cardId: number }>`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 12px;
-  left: ${(p) => cardPositions.left[p.id]};
-  top: ${(p) => cardPositions.top[p.id]};
+  left: ${(p) => cardPositions.left[p.cardId]};
+  top: ${(p) => cardPositions.top[p.cardId]};
   height: min-content;
 
   background: ${(p) => p.theme.colors.white};
