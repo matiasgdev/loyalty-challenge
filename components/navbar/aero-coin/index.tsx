@@ -6,14 +6,18 @@ import Arrow from '../../commons/arrow-btn';
 import TextGradient from '../../commons/text-gradient';
 import Text from '../../texts/text';
 import AeroCard from '../../cards/aero-card';
+import useHandlerKeyPress from '../../../hooks/useHandlerKeyPress';
 
 function AeroCoin() {
   const [isOpen, setIsOpen] = useState(false);
   const isTablet = useMediaQuery(1024);
-  const toggleBalance = useCallback(() => setIsOpen((prev) => !prev), []);
+  const handleOnClick = useCallback(() => setIsOpen((prev) => !prev), []);
+  const handleOnKeyPress = useHandlerKeyPress(() => {
+    setIsOpen((prev) => !prev);
+  });
   return (
     <>
-      <AeroCoinContainer onClick={toggleBalance}>
+      <AeroCoinContainer onClick={handleOnClick} onKeyPress={handleOnKeyPress} tabIndex={1}>
         <Image
           alt='Aeropain Icon'
           src='/assets/icons/aeropay-1.svg'
