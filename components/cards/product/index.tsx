@@ -19,7 +19,7 @@ const ProductCard: React.FC<Props> = (props) => {
         <div className='product-image'>
           <Image src='/go-pro.png' alt='product' layout='fill' objectFit='contain' loading='lazy' />
         </div>
-        <div className='product-image'>
+        <div className='product-detail'>
           <Text color='gray900'>Go Pro Hero 4</Text>
           <TextL2Caps color='gray600'>Go Pro Hero 4</TextL2Caps>
         </div>
