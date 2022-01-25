@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const HeroContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -11,38 +12,49 @@ export const HeroContainer = styled.div`
   margin-top: 30px;
   padding-top: 44px;
 
-  @media screen and (max-width: ${(p) => p.theme.bp.desktopMedium}) {
-    column-gap: 40px;
-  }
-
-  @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+  .illustration {
+    display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 
   .description {
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
 
-    @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+  @media screen and (max-width: ${(p) => p.theme.bp.desktopMedium}) {
+    column-gap: 40px;
+  }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+    flex-direction: column;
+
+    .description {
       text-align: center;
       justify-content: center;
       align-items: center;
       width: 100%;
+
     }
-  }
 
-  .illustration {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+    .illustration {
       text-align: center;
       justify-content: center;
       align-items: center;
       width: 100%;
       margin-top: 72px;
+    }
+  }
+
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    margin-bottom: 6em;
+    height: 70vh;
+
+    .illustration {
+      margin-top: 0;
     }
   }
 `;

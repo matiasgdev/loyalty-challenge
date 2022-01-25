@@ -26,6 +26,10 @@ const Container = styled.div`
   position: static;
   left: 64px;
   top: 8px;
+
+  h3 {
+    white-space: nowrap;
+  }
 `;
 
 const WalkthroughTitle: React.FC<{ iconId: number }> = (props) => {

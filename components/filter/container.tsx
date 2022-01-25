@@ -28,11 +28,37 @@ export const FiltersContainer = styled.div`
 
   @media screen and (max-width: ${(p) => p.theme.bp.desktopMedium}) {
     align-items: flex-start;
+    
+
+    .separator {
+      display: none;
+    }
+
+    .filters {
+      margin-right: 82px;
+    }
+  }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+    .pagination-wrapper {
+      display: none;
+    }
+
+    .filters {
+      flex-direction: column;
+    }
   }
 
   @media screen and (max-width: ${(p) => p.theme.bp.tabletMedium}) {
-    .pagination-wrapper {
-      display: none;
+    
+    .filters {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    .filters {
+      width: 100%;
     }
   }
 `;

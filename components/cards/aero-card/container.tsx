@@ -25,6 +25,11 @@ export const AeroCardContainer = styled.div`
     padding: 24px;
   }
 
+  @media screen and (max-width: ${(p) => p.theme.bp.mobileSmall}) {
+    min-width: calc(100vw - ${(p) => p.theme.spacing.sideMargin.mobile});
+    transform: translateX(10px);
+  }
+
   .buttons {
     display: flex;
     flex-direction: column;

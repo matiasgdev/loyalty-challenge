@@ -18,29 +18,30 @@ export const WalkthroughCardContainer = styled.div<{ rotation?: string; cardId: 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 12px;
-  left: ${(p) => cardPositions.left[p.cardId]};
-  top: ${(p) => cardPositions.top[p.cardId]};
-  height: min-content;
 
+  flex-basis: 33%;
+  padding: 12px;
+  left: ${(p) => cardPositions.left[p.cardId as keyof typeof cardPositions.left]};
+  top: ${(p) => cardPositions.top[p.cardId as keyof typeof cardPositions.top]};
+  height: min-content;
+  
   background: ${(p) => p.theme.colors.white};
   border: 1px solid ${(p) => p.theme.colors.gray300};
   box-sizing: border-box;
   box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.05);
   border-radius: 32px;
   transform: rotate(${(p) => p.rotation});
-
+  
   @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+    max-width: 420px;
     transform: rotate(0deg);
     left: 0;
     top: 0;
-    height: 100%;
   }
 `;
 
 export const IllustrationCardContainer = styled.div`
   position: relative;
-  height: 100%;
   width: 100%;
   background: ${(p) => p.theme.bgColors.specials.illustration};
   background-size: cover;

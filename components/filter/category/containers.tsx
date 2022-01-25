@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CategoryFilterContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   .controllers {
@@ -14,6 +14,13 @@ export const CategoryFilterContainer = styled.div`
   @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
     .controllers {
       margin-left: 0px;
+    }
+  }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    width: 100%;
+    .controllers {
+      width: 100%;
     }
   }
 `;
@@ -42,6 +49,10 @@ export const OptionContainer = styled.div`
     &:hover {
       background: ${(p) => p.theme.colors.gray100};
     }
+  }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    width: 100%;
   }
 `;
 

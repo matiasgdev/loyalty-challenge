@@ -29,6 +29,11 @@ const HeroButton = styled(BaseButton)`
     width: 303px;
     margin-top: 40px;
   }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobileSmall}) {
+    height: 64px;
+    width: 100%;
+  }
 `;
 
 export default HeroButton;

@@ -12,4 +12,14 @@ export const SortByFilterContainer = styled.div`
   .controllers {
     display: flex;
   }
+
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 16px
+  }
 `;

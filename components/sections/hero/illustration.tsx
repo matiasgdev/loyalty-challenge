@@ -14,6 +14,12 @@ const IllustrationContainer = styled.div`
     height: 520px;
     width: 580px;
   }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    padding-top: 3em;
+    width: 100vw;
+    align-items: flex-end;
+  }
 `;
 
 const OverlayContainer = styled.div`
@@ -38,6 +44,10 @@ const OverlayContainer = styled.div`
     height: min-content;
     width: 100%
   }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    place-items: center;
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -56,11 +66,16 @@ const ImageWrapper = styled.div`
 
 
   @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+    height: 500px;
     width: 100%;
     background-size: cover;
     background-position: 100% 100%;
   }
 
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    align-items: flex-start;
+    background-position: center 0;
+  }
 `;
 
 const Illustration = () => {

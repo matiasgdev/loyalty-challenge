@@ -20,6 +20,7 @@ export const ProductListContainer = styled.ul`
   }
   @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
     grid-template-columns: repeat(1, minmax(min-content, 1fr));
+    margin: 48px 0px 64px 0px;
   }
 
 `;
