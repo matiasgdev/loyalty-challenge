@@ -30,7 +30,6 @@ const ProductCard: React.FC<Props> = (props) => {
         </div>
       </ProductCardContainer>
       <CardButton
-        disabled={disabled}
         disabled={disabled || isRedeemed}
         disablePointer={disabled || isRedeemed}
         onClick={(e) => {
