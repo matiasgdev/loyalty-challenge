@@ -1,0 +1,1 @@
+export const aerolabApiEndpoint = 'https://coding-challenge-api.aerolab.co';

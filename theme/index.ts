@@ -32,7 +32,7 @@ export const theme = {
             mobile: '20px'
         },
         content: {
-            desktop: '1464px'
+            desktop: '1384px'
         }
     },
     bp: {

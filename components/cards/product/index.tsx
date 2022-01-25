@@ -5,32 +5,45 @@ import InactiveIcon from './inactive-icon';
 import ActiveIcon from './active-icon';
 import Text from '../../texts/text';
 import TextL2Caps from '../../texts/text-l2-caps';
+import { Product } from '../../../types/Product';
+import useRedeem from '../../../hooks/useReedem';
 
-interface Props {
+interface Props extends Product {
   disabled?: boolean;
   loading?: boolean;
+  isRedeemed: boolean;
 }
 
 const ProductCard: React.FC<Props> = (props) => {
-  const { disabled, loading } = props;
+  const { disabled, loading, name, category, cost, img, _id, isRedeemed } = props;
+  const redeemMutation = useRedeem();
+
   return (
-    <ProductContainer role='listitem'>
+    <ProductContainer role='listitem' arial-label={`Item ${name}`}>
       <ProductCardContainer>
         <div className='product-image'>
-          <Image src='/go-pro.png' alt='product' layout='fill' objectFit='contain' loading='lazy' />
+          <Image src={img.url} alt='product' layout='fill' objectFit='contain' loading='lazy' />
         </div>
         <div className='product-detail'>
-          <Text color='gray900'>Go Pro Hero 4</Text>
-          <TextL2Caps color='gray600'>Go Pro Hero 4</TextL2Caps>
+          <Text color='gray900'>{name}</Text>
+          <TextL2Caps color='gray600'>{category}</TextL2Caps>
         </div>
       </ProductCardContainer>
-      <CardButton disabled={disabled} loading={loading}>
+      <CardButton
+        disabled={disabled}
+        disabled={disabled || isRedeemed}
+        disablePointer={disabled || isRedeemed}
+        onClick={(e) => {
+          redeemMutation.mutate(_id);
+        }}>
         <Text color='white'>
-          {loading ? (
+          {redeemMutation.isLoading ? (
             'Processing...'
+          ) : isRedeemed ? (
+            'Redeemed'
           ) : (
             <>
-              {disabled ? 'You need' : 'Reedem for'} {disabled ? <InactiveIcon /> : <ActiveIcon />} 12.500
+              {disabled ? 'You need' : 'Redeem for'} {disabled ? <InactiveIcon /> : <ActiveIcon />} {cost}
             </>
           )}
         </Text>

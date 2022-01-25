@@ -8,7 +8,7 @@ import ArrowMainButton from '../../commons/arrow-main-btn'
 
 const Hero = () => {
   return (
-    <HeroContainer>
+    <HeroContainer role='banner'>
       <MainContainer>
         <div className='description'>
           <TextSection />

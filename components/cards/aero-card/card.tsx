@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 import styled, { css } from 'styled-components';
+import useUser from '../../../hooks/useUser';
 import Text from '../../texts/text';
 import TextL2 from '../../texts/text-l2';
+import { normalizeWithRandomYear } from '../../../utils/normalize-with-random-year';
 
 const Container = styled.div`
   display: flex;
@@ -64,6 +66,8 @@ const WaveBG = styled.div`
   `};
 `;
 const Card = () => {
+  const { data: user } = useUser();
+
   return (
     <Container>
       <div className='card-header'>
@@ -71,8 +75,8 @@ const Card = () => {
         <Image src='/assets/icons/aerolab-icon-card.svg' width='24' height='24' alt='Aerolab Icon Card' />
       </div>
       <div className='card-description'>
-        <TextL2 color='white'>John Kite</TextL2>
-        <TextL2 color='white'>07/23</TextL2>
+        <TextL2 color='white'>{user?.name}</TextL2>
+        <TextL2 color='white'>{normalizeWithRandomYear(user?.createDate)}</TextL2>
       </div>
       <WaveBG />
     </Container>

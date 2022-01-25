@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import useHandlerKeyPress from '../../hooks/useHandlerKeyPress';
 import { theme } from '../../theme';
 import TextGradient from '../commons/text-gradient';
 import Text from '../texts/text';
@@ -8,6 +9,9 @@ interface Props {
   selected?: boolean;
   width: string;
   height: string;
+  onClick?: () => void;
+  onKeyPressCallback?: () => void;
+  disabled?: boolean;
   className?: string;
 }
 
@@ -22,7 +26,12 @@ const Button = styled(BaseButton)<Props>`
   border-radius: 12px;
   border: none;
 
-  background: ${(p) => (p.selected ? p.theme.bgColors.brand : p.theme.bgColors.ligth)};
+  background: ${(p) =>
+    p.disabled
+      ? p.theme.bgColors.specials.illustrationLight
+      : p.selected
+      ? p.theme.bgColors.brand
+      : p.theme.bgColors.ligth};
 
   p {
     color: ${(p) => p.theme.colors.white};
@@ -33,10 +42,29 @@ const Button = styled(BaseButton)<Props>`
   }
 `;
 
-const BrandButton: React.FC<Props> = ({ selected, width, height, children, className = '' }) => (
-  <Button selected={selected} width={width} height={height} className={className}>
-    <Text>{!selected ? <TextGradient type='brand'>{children}</TextGradient> : children}</Text>
-  </Button>
-);
+const BrandButton: React.FC<Props> = ({
+  selected,
+  width,
+  height,
+  children,
+  onClick,
+  onKeyPressCallback,
+  className = '',
+  disabled,
+}) => {
+  const onKeyPress = useHandlerKeyPress<HTMLButtonElement>(() => onKeyPressCallback?.());
+  return (
+    <Button
+      selected={selected}
+      width={width}
+      height={height}
+      className={className}
+      onClick={onClick}
+      onKeyPress={onKeyPress}
+      disabled={disabled}>
+      <Text>{!selected ? <TextGradient type='brand'>{children}</TextGradient> : children}</Text>
+    </Button>
+  );
+};
 
 export default BrandButton;

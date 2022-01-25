@@ -8,7 +8,6 @@ export const AeroCoinContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  column-gap: 8px;
   height: 48px;
   padding: 8px 16px;
 
@@ -18,10 +17,18 @@ export const AeroCoinContainer = styled.div`
   border-radius: 16px;
   box-sizing: border-box;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-
+  
   &:hover {
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .controller {
+    cursor: pointer;
+    display: inherit;
+    flex-direction: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    column-gap: 8px;
   }
 
   .arrow-container {

@@ -36,7 +36,7 @@ export const HeroContainer = styled.div`
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-  
+
     @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
       text-align: center;
       justify-content: center;
@@ -44,7 +44,5 @@ export const HeroContainer = styled.div`
       width: 100%;
       margin-top: 72px;
     }
-
   }
-
 `;
