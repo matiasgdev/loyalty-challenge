@@ -6,6 +6,7 @@ import Walkthroughs from '../components/sections/walkthroughs';
 import Products from '../components/sections/products';
 import Footer from '../components/sections/footer';
 import BackgroundWave from '../components/commons/background-wave';
+import { initStateWith } from '../store/global';
 
 const StoreProvider = store.StoreProvider;
 
@@ -19,11 +20,7 @@ const Home = () => {
       </Head>
       <main>
         <StoreProvider
-          initialState={{
-            pages: {
-              currentPage: 1,
-            },
-          }}>
+          initialState={initStateWith}>
           <Navbar />
           <BackgroundWave>
             <Hero />

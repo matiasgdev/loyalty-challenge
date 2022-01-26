@@ -1,11 +1,15 @@
-import { useState } from 'react';
 import { SortByFilterContainer } from './container';
-import PriceFilterButton from '../../buttons/price-filter-button';
+import PriceFilterButton from '../../buttons/price-filter-buton';
 import Text from '../../texts/text';
 import { sortByOptions } from '../../../misc/sort-by-options';
+import store from '../../../store';
 
 const SortByFilter = () => {
-  const [selected] = useState('recent');
+  const {
+    state: {
+      products: { selectedSortBy },
+    },
+  } = store.useStore();
   return (
     <SortByFilterContainer>
       <Text color='gray600' className='category-title'>
@@ -13,9 +17,7 @@ const SortByFilter = () => {
       </Text>
       <div className='controllers'>
         {sortByOptions.map((option) => (
-          <PriceFilterButton key={option.value} selected={option.value === selected}>
-            {option.title}
-          </PriceFilterButton>
+          <PriceFilterButton key={option.value} selected={option.title === selectedSortBy} title={option.title} />
         ))}
       </div>
     </SortByFilterContainer>

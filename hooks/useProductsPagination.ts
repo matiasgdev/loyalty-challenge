@@ -2,6 +2,8 @@ import { useInfiniteQuery } from 'react-query';
 import { api } from '../services/api';
 import store from '../store';
 import { setPages } from '../store/pages/actions';
+import { setOptions } from '../store/products/actions';
+import { getOptions } from '../utils/get-options';
 import useMediaQuery from './useMediaQuery';
 
 export const useProductsPagination = () => {
@@ -12,7 +14,9 @@ export const useProductsPagination = () => {
     getNextPageParam: (lastPage) => (lastPage.hasMore ? lastPage.nextPage : undefined),
     onSuccess: (data) => {
       const size = data.pages.find((res) => res.total)?.total as number;
+      const options = getOptions(data);
       dispatch(setPages(size));
+      dispatch(setOptions(options));
     },
   });
 };

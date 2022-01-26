@@ -6,7 +6,6 @@ import useMediaQuery from '../../hooks/useMediaQuery';
 
 function Navbar() {
   const isTablet = useMediaQuery(1024);
-  console.log({ isTablet })
   return (
     <NavbarContainer>
       <MainContainer>

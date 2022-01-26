@@ -13,6 +13,11 @@ export const initStateWith: StateType = {
   pages: {
     currentPage: 1,
   },
+  products: {
+    options: [],
+    selectedOption: 'All products',
+    selectedSortBy: 'Most Recent'
+  }
 };
 
 export default function makeStore() {

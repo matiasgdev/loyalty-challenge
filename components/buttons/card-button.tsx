@@ -1,4 +1,4 @@
-import styled, { keyframes,css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { skeleton } from '../../misc/animations';
 import BaseButton from './base';
 

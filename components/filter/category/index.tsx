@@ -2,13 +2,17 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CategoryFilterContainer, OptionContainer, SelectController } from './containers';
 import Text from '../../texts/text';
-import { categoryOptions } from '../../../misc/category-options';
+import store from '../../../store';
+import { setSelectedOption } from '../../../store/products/actions';
 
 const CategoryFilter = () => {
-  const [selected] = useState('All products');
+  const {
+    state: { products },
+    dispatch,
+  } = store.useStore();
   const [open, setOpen] = useState(false);
   const toggleOpenOptions = () => {
-    setOpen((open) => !open);
+    products.options.length && setOpen((open) => !open);
   };
   return (
     <CategoryFilterContainer>
@@ -17,18 +21,24 @@ const CategoryFilter = () => {
       </Text>
       <div className='controllers'>
         <SelectController onClick={toggleOpenOptions}>
-          <Text color='gray600'>{selected}</Text>
+          <Text color='gray600'>{products.selectedOption}</Text>
         </SelectController>
-        {open && (
+        {open && products.options.length && (
           <OptionContainer as={motion.div} initial={{ y: -59 }} animate={{ y: 0 }}>
-            {categoryOptions.map((option) => (
-              <div key={option.value} className='option-item'>
+            {products.options.map((option) => (
+              <div
+                key={option}
+                className='option-item'
+                onClick={() => {
+                  dispatch(setSelectedOption(option));
+                  toggleOpenOptions();
+                }}>
                 <Text
                   color='gray600'
                   as={motion.p}
                   whileHover={{ scale: 1.05, originX: 0 }}
                   transition={{ type: 'spring', stiffness: 300 }}>
-                  {option.name}
+                  {option}
                 </Text>
               </div>
             ))}

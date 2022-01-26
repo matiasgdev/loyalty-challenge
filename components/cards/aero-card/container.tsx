@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const AeroCardContainer = styled.div`
   position: absolute;
-  z-index: 100;
+  z-index: 99999;
   top: 56px;
   right: 0;
 

@@ -2,7 +2,7 @@ import { PagesState } from './types';
 import * as ACTIONS from './action-types';
 import { AppActionsTypes } from '../types';
 
-const modalsReducer = (state: PagesState, action: AppActionsTypes): PagesState => {
+const pagesReducer = (state: PagesState, action: AppActionsTypes): PagesState => {
   switch (action.type) {
     case ACTIONS.RESET: {
       return { ...state, currentPage: 1 };
@@ -30,4 +30,4 @@ const modalsReducer = (state: PagesState, action: AppActionsTypes): PagesState =
   }
 };
 
-export default modalsReducer;
+export default pagesReducer;

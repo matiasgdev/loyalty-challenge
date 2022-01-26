@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const AeroCoinContainer = styled.div`
   position: relative;
+  z-index: 999;
 
   display: flex;
   flex-direction: row;

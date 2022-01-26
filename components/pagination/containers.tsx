@@ -23,14 +23,14 @@ export const ArrowContainer = styled.button<{ left?: boolean }>`
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  
-  transition: background .1s ease-in-out;
 
   &:disabled {
-    border: 1px solid red;
+    cursor: initial;
   }
   
-  &:hover, &:active {
+  transition: background .1s ease-in-out;
+  
+  &:hover:enabled, &:active:enabled {
     background: ${(p) => p.theme.bgColors.light2};
   }
 
