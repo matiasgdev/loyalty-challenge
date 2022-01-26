@@ -4,7 +4,8 @@ import Text from '../../texts/text';
 import IllustrationHero from './illustration';
 import TextSection from './text-section';
 import MainContainer from '../../containers/main-container';
-import ArrowMainButton from '../../commons/arrow-main-btn'
+import ArrowMainButton from '../../commons/arrow-main-btn';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
@@ -12,16 +13,33 @@ const Hero = () => {
       <MainContainer>
         <div className='description'>
           <TextSection />
-          <HeroButton>
+          <HeroButton
+            as={motion.button}
+            animate={{ scale: 1 }}
+            initial={{ scale: 0 }}
+            transition={{
+              type: 'spring',
+              stiffness: 130,
+              delay: 0.5,
+            }}>
             <Text color='white'>
               VIEW ALL PRODUCTS
               <ArrowMainButton />
             </Text>
           </HeroButton>
         </div>
-        <div className='illustration'>
+        <motion.div
+          className='illustration'
+          animate={{ scale: 1 }}
+          initial={{ scale: 0 }}
+          transition={{
+            type: 'spring',
+            stiffness: 80,
+            delay: 0.2,
+            duration: .3
+          }}>
           <IllustrationHero />
-        </div>
+        </motion.div>
       </MainContainer>
     </HeroContainer>
   );

@@ -57,6 +57,8 @@ export const OptionContainer = styled.div`
 `;
 
 export const SelectController = styled.div`
+  position: relative;
+  z-index: 9999;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

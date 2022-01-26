@@ -26,7 +26,7 @@ export const AeroCardContainer = styled.div`
   }
 
   @media screen and (max-width: ${(p) => p.theme.bp.mobileSmall}) {
-    min-width: calc(100vw - ${(p) => p.theme.spacing.sideMargin.mobile});
+    min-width: calc(100vw - 40px);
     transform: translateX(10px);
   }
 

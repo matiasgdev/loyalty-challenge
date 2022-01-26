@@ -8,6 +8,8 @@ import Text from '../../texts/text';
 import AeroCard from '../../cards/aero-card';
 import useHandlerKeyPress from '../../../hooks/useHandlerKeyPress';
 import useUser from '../../../hooks/useUser';
+import { motion } from 'framer-motion';
+import { navVariants } from '../../../misc/animations';
 
 function AeroCoin() {
   const { data: user } = useUser();
@@ -19,7 +21,7 @@ function AeroCoin() {
   });
   return (
     <>
-      <AeroCoinContainer>
+      <AeroCoinContainer as={motion.div} variants={navVariants} custom='aero-coin' initial='hidden' animate='visible'>
         <div
           className='controller'
           tabIndex={1}
@@ -40,7 +42,7 @@ function AeroCoin() {
             <Arrow direction={isOpen ? 'bottom' : 'top'} />
           </div>
         </div>
-        {isOpen && <AeroCard />}
+        <AeroCard isOpen={isOpen} />
       </AeroCoinContainer>
     </>
   );
