@@ -1,3 +1,3 @@
-import { ModalActionsTypes } from './modals/action-types';
+import { PagesActions } from './pages/action-types';
 
-export type AppActionsTypes = ModalActionsTypes;
+export type AppActionsTypes = PagesActions;

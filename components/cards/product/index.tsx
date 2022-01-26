@@ -10,15 +10,16 @@ import { Product } from '../../../types/Product';
 import useRedeem from '../../../hooks/useReedem';
 import { toast } from 'react-toastify';
 import Alert from '../../commons/alert';
+import ImageSkeleton from '../../commons/image-skeleton';
 
 interface Props extends Product {
   disabled?: boolean;
-  loading?: boolean;
-  isRedeemed: boolean;
+  isSkeleton?: boolean;
+  isRedeemed?: boolean;
 }
 
 const ProductCard: React.FC<Props> = (props) => {
-  const { disabled, loading, name, category, cost, img, _id, isRedeemed } = props;
+  const { disabled, isSkeleton, name, category, cost, img, _id, isRedeemed } = props;
   const { isLoading, mutate: redeem, status } = useRedeem();
 
   useEffect(() => {
@@ -30,22 +31,36 @@ const ProductCard: React.FC<Props> = (props) => {
   return (
     <ProductContainer role='listitem' arial-label={`Item ${name}`}>
       <ProductCardContainer>
-        <div className='product-image'>
-          <Image src={img.url} alt='product' layout='fill' objectFit='contain' loading='lazy' />
+        <div className={`product-image ${isSkeleton ? 'product-image-skeleton' : ''}`}>
+          {isSkeleton ? (
+            <ImageSkeleton />
+          ) : (
+            <Image
+              src={img.url}
+              alt='product'
+              layout='fill'
+              objectFit='contain'
+              loading='lazy'
+              className='product-image-item'
+            />
+          )}
         </div>
-        <div className='product-detail'>
+        <div className={`product-detail ${isSkeleton ? 'product-detail-skeleton' : ''}`}>
           <Text color='gray900'>{name}</Text>
           <TextL2Caps color='gray600'>{category}</TextL2Caps>
         </div>
       </ProductCardContainer>
       <CardButton
+        loading={isSkeleton}
         disabled={disabled || isRedeemed}
         disablePointer={disabled || isRedeemed}
         onClick={(e) => {
           redeem(_id);
         }}>
         <Text color='white'>
-          {isLoading ? (
+          {isSkeleton ? (
+            ''
+          ) : isLoading ? (
             'Processing...'
           ) : isRedeemed ? (
             'Redeemed'

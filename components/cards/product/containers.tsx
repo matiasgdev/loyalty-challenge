@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { skeleton } from '../../../misc/animations';
 
 export const ProductContainer = styled.li`
   display: flex;
@@ -21,9 +22,18 @@ export const ProductCardContainer = styled.div`
 
   .product-image {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     height: 355px;
-
     border-bottom: 1px solid ${(p) => p.theme.colors.gray300};
+    
+    &-item {
+      background: url('assets/icons/aerolab-placeholder.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 
   .product-detail {
@@ -38,8 +48,30 @@ export const ProductCardContainer = styled.div`
 
     height: 88px;
     padding: 16px 24px 24px;
+
+    &-skeleton {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+
+      p {
+        color: transparent;
+        border-radius: 12px;
+        background: ${(p) => p.theme.colors.gray300};
+        animation: ${skeleton} 1s linear infinite alternate;
+      }
+
+      p:first-child {
+        height: 1em;
+        width: 75%;
+      }
+      p:last-child {
+        height: 0.5em;
+        width: 30%;
+      }
+    }
   }
-  
+
   @media screen and (max-width: ${(p) => p.theme.bp.desktopMedium}) {
     .product-image {
       height: 320px;

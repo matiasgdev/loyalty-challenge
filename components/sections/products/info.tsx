@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import store from '../../../store';
 import TextGradient from '../../commons/text-gradient';
 import Pagination from '../../pagination';
 import Text from '../../texts/text';
@@ -28,13 +29,19 @@ const Container = styled.div`
 `;
 
 const ProductsInfo = () => {
+  const { state: { pages }} = store.useStore();
   return (
-    <Container>
-      <Text color='gray600'>
-        <TextGradient type='brand'>16 of 32</TextGradient> products
-      </Text>
-      <Pagination />
-    </Container>
+    pages ? (
+      <Container>
+        <Text color='gray600'>
+          <TextGradient type='brand'>
+            {(pages?.limit * pages.currentPage).toString()} of {pages.pages}
+          </TextGradient>{' '}
+          products
+        </Text>
+        <Pagination />
+      </Container>
+    ) : null
   );
 };
 

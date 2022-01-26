@@ -5,7 +5,7 @@ export interface Product {
   category: string;
   img: {
     url: string;
-    hdUrl: string;
+    hdUrl?: string;
   };
 }
 

@@ -1,13 +1,13 @@
-import modalsReducer from './modals/reducer';
-import { ModalsState } from './modals/types';
+import pagesReducer from './pages/reducer';
+import { PagesState } from './pages/types';
 import { AppActionsTypes } from './types';
 
 export type StateType = {
-    modals: ModalsState,
+  pages: PagesState;
 };
 
-const mainReducer = ({ modals }: StateType, action: AppActionsTypes) => ({
-    modals: modalsReducer(modals, action),
+const mainReducer = ({ pages }: StateType, action: AppActionsTypes) => ({
+  pages: pagesReducer(pages, action),
 });
 
 export default mainReducer;

@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { isClient } from '../utils/is-client';
 
 function useMediaQuery(size: number) {
-  const [mqMatches, setMqMatches] = useState(false);
+  const [mqMatches, setMqMatches] = useState(() => {
+    return isClient() && window?.innerWidth <= size
+  });
 
   useEffect(() => {
     const listener = () => {

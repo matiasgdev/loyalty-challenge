@@ -1,16 +1,15 @@
-import { useEffect } from 'react';
-import type { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
+import store from '../store';
 import Navbar from '../components/navbar';
-import Hero  from '../components/sections/hero';
+import Hero from '../components/sections/hero';
 import Walkthroughs from '../components/sections/walkthroughs';
 import Products from '../components/sections/products';
 import Footer from '../components/sections/footer';
 import BackgroundWave from '../components/commons/background-wave';
-import { api } from '../services/api';
-import useProducts from '../hooks/useProducts';
 
-const Home = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const StoreProvider = store.StoreProvider;
+
+const Home = () => {
   return (
     <div>
       <Head>
@@ -19,29 +18,29 @@ const Home = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
         <link rel='icon' href='/assets/icons/favicon.svg' />
       </Head>
       <main>
-        <Navbar />
-        <BackgroundWave>
-          <Hero />
-          <Walkthroughs />
-        </BackgroundWave>
-        <Products />
-        <Footer />
+        <StoreProvider
+          initialState={{
+            pages: {
+              currentPage: 1,
+            },
+          }}>
+          <Navbar />
+          <BackgroundWave>
+            <Hero />
+            <Walkthroughs />
+          </BackgroundWave>
+          <Products />
+          <Footer />
+        </StoreProvider>
       </main>
     </div>
   );
 };
 
-
 export const getServerSideProps = async () => {
-  const user = await api.getUser();
-  const history = await api.getHistory();
-
   return {
-    props: {
-      user,
-      history
-    }
-  }
-}
+    props: {},
+  };
+};
 
 export default Home;

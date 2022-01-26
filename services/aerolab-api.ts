@@ -1,8 +1,8 @@
-import { aerolabApiEndpoint } from "../misc/aerolab-endpoint";
-import { resources } from "../misc/resources";
-import { Data } from "../types/Data";
-import { Resources } from "../types/Resources";
-import { _fetch } from "../utils/_fetch";
+import { aerolabApiEndpoint } from '../misc/aerolab-endpoint';
+import { resources } from '../misc/resources';
+import { Data } from '../types/Data';
+import { Resources } from '../types/Resources';
+import { _fetch } from '../utils/_fetch';
 
 export const aerolabApi = <T = any>(resource: string, data?: Data['redeem'] | Data['add-points']) => {
   const endpoint = resources[resource as Resources];
@@ -13,7 +13,7 @@ export const aerolabApi = <T = any>(resource: string, data?: Data['redeem'] | Da
     method: data ? 'POST' : 'GET',
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+      authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN ?? process.env.AUTH_TOKEN}`,
     },
   };
 

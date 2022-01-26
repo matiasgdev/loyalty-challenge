@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { keyframes,css } from 'styled-components';
+import { skeleton } from '../../misc/animations';
 import BaseButton from './base';
 
 interface Props {
@@ -17,12 +18,15 @@ const CardButton = styled(BaseButton)<Props>`
   border: none;
 
   background: ${(p) =>
-    p.loading
-      ? p.theme.bgColors.specials.illustrationLight
-      : p.disabled
-      ? p.theme.colors.gray200
-      : p.theme.bgColors.brand};
+    p.loading ? p.theme.colors.gray200 : p.disabled ? p.theme.colors.gray200 : p.theme.bgColors.brand};
 
+  ${(p) => (p.loading && css`
+    box-shadow: none;
+    animation: ${skeleton} 1s linear infinite alternate;
+  `)};
+
+
+  
   p {
     display: flex;
     justify-content: center;
