@@ -18,7 +18,7 @@ const Pagination: React.FC<Props> = ({ refForward }) => {
       pages: { currentPage, pages: size, limit },
     },
   } = store.useStore();
-  const { fetchNextPage, hasNextPage } = useProductsPagination();
+  const { fetchNextPage, hasNextPage, isLoading } = useProductsPagination();
 
   const hasPreviousPages = useMemo(() => currentPage > 1, [currentPage]);
   const canGoToNextPage = useMemo(
@@ -29,19 +29,20 @@ const Pagination: React.FC<Props> = ({ refForward }) => {
   const handleNextPage = useCallback(() => {
     dispatch(setPageAction(currentPage + 1));
     fetchNextPage();
-    refForward.current?.scrollIntoView();
-  }, [dispatch, fetchNextPage, currentPage, refForward]);
+  }, [dispatch, fetchNextPage, currentPage]);
 
   const handlePreviousPage = useCallback(() => {
     if (currentPage > 1) {
       dispatch(setPageAction(currentPage - 1));
-      refForward.current?.scrollIntoView();
     }
-  }, [dispatch, currentPage, refForward]);
+  }, [dispatch, currentPage]);
 
   return (
     <PaginationContainer className='pagination' role='navigation' arial-label='Pagination of products'>
-      <ArrowContainer left arial-label='Previous page' onClick={handlePreviousPage} disabled={!hasPreviousPages}>
+      <ArrowContainer left arial-label='Previous page' onClick={() => {
+        handlePreviousPage();
+        refForward.current?.scrollIntoView();
+      }} disabled={!hasPreviousPages}>
         <Arrow direction='left' color={!hasPreviousPages ? theme.colors.gray300 : theme.colors.gray500} />
       </ArrowContainer>
       <Text color='gray600'>
@@ -50,7 +51,10 @@ const Pagination: React.FC<Props> = ({ refForward }) => {
           {currentPage} of {size && size / limit}
         </TextGradient>
       </Text>
-      <ArrowContainer arial-label='Next Page' onClick={handleNextPage} disabled={canGoToNextPage}>
+      <ArrowContainer arial-label='Next Page' onClick={() => {
+        handleNextPage();
+        refForward.current?.scrollIntoView();
+      }} disabled={canGoToNextPage}>
         <Arrow direction='right' color={!canGoToNextPage ? theme.colors.gray500 : theme.colors.gray300} />
       </ArrowContainer>
     </PaginationContainer>

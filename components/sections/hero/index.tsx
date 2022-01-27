@@ -14,7 +14,7 @@ const Hero = () => {
         <div className='description'>
           <TextSection />
           <HeroButton
-            as={motion.button}
+            as={motion.a}
             tabIndex={2}
             animate={{ scale: 1 }}
             initial={{ scale: 0 }}
@@ -22,7 +22,8 @@ const Hero = () => {
               type: 'spring',
               stiffness: 130,
               delay: 0.5,
-            }}>
+            }}
+            href='#products-section'>
             <Text color='white'>
               VIEW ALL PRODUCTS
               <ArrowMainButton />
@@ -37,7 +38,7 @@ const Hero = () => {
             type: 'spring',
             stiffness: 80,
             delay: 0.2,
-            duration: .3
+            duration: 0.3,
           }}>
           <IllustrationHero />
         </motion.div>

@@ -11,7 +11,7 @@ const Products: React.FC = () => {
   const ref = useRef(null);
   
   return (
-    <ProductsContainer role='main' ref={ref}>
+    <ProductsContainer role='main' ref={ref} id="products-section">
       <MainContainer>
         <header>
           <MediumTitle as='h2'>

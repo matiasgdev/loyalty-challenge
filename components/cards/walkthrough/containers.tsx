@@ -24,16 +24,18 @@ export const WalkthroughCardContainer = styled.div<{ rotation?: string; cardId: 
   left: ${(p) => cardPositions.left[p.cardId as keyof typeof cardPositions.left]};
   top: ${(p) => cardPositions.top[p.cardId as keyof typeof cardPositions.top]};
   height: min-content;
-  
+
   background: ${(p) => p.theme.colors.white};
   border: 1px solid ${(p) => p.theme.colors.gray300};
   box-sizing: border-box;
   box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.05);
   border-radius: 32px;
   transform: rotate(${(p) => p.rotation});
-  
+
   @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
     max-width: 420px;
+    background: rgba(255, 255, 255, .7);
+
     transform: rotate(0deg);
     left: 0;
     top: 0;

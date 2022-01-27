@@ -1,12 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
 import styled, { css } from 'styled-components';
-import useUser from '../../../hooks/useUser';
-import Text from '../../texts/text';
-import TextL2 from '../../texts/text-l2';
-import { normalizeWithRandomYear } from '../../../utils/normalize-with-random-year';
 
-const Container = styled.div`
+export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,7 +45,7 @@ const pattern = (q: number) => {
 `;
 };
 
-const WaveBG = styled.div`
+export const WaveBG = styled.div`
   position: absolute;
   width: 140%;
   height: 120%;
@@ -65,22 +59,3 @@ const WaveBG = styled.div`
     ${pattern(10)}
   `};
 `;
-const Card = () => {
-  const { data: user } = useUser();
-
-  return (
-    <Container>
-      <div className='card-header'>
-        <Text color='white'>Aerocard</Text>
-        <Image src='/assets/icons/aerolab-icon-card.svg' width='24' height='24' alt='Aerolab Icon Card' />
-      </div>
-      <div className='card-description'>
-        <TextL2 color='white'>{user?.name}</TextL2>
-        <TextL2 color='white'>{normalizeWithRandomYear(user?.createDate)}</TextL2>
-      </div>
-      <WaveBG />
-    </Container>
-  );
-};
-
-export default Card;
