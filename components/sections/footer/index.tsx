@@ -35,8 +35,8 @@ const Footer = () => {
   const onMouseLeave = () => setIsHovered(false);
   return (
     <Container>
-      <Link href='/'>
-        <a className='link' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+      <Link href='https://github.com/matiasgdev/loyalty-challenge' >
+        <a className='link' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} target="_blank">
           <Image
             src={isHovered ? '/assets/icons/github-active.svg' : '/assets/icons/github-default.svg'}
             alt='Github Default'

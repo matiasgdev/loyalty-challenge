@@ -22,7 +22,7 @@ const Pagination: React.FC<Props> = ({ refForward }) => {
 
   const hasPreviousPages = useMemo(() => currentPage > 1, [currentPage]);
   const canGoToNextPage = useMemo(
-    () => (hasNextPage ? !hasNextPage : !(currentPage >= 1 && currentPage < size / limit)),
+    () => (hasNextPage ? !hasNextPage : !(currentPage >= 1 && currentPage < (size as number) / (limit as number))),
     [currentPage, size, limit, hasNextPage],
   );
 
@@ -43,7 +43,7 @@ const Pagination: React.FC<Props> = ({ refForward }) => {
     <>
       Page{' '}
       <TextGradient type='brand'>
-        {currentPage} of {size && size / limit}
+        {currentPage} of {(size as number) / (limit as number)}
       </TextGradient>
     </>
   );
