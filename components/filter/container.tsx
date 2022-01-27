@@ -11,7 +11,7 @@ export const FiltersContainer = styled.div`
     margin: 0 40px;
     height: 59px;
     width: 2px;
-    background: ${(p) => p.theme.colors.gray300};
+    background: none;
   }
 
   .filters {
