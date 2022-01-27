@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ProductCardContainer, ProductContainer } from './containers';
 import { toast } from 'react-toastify';
@@ -20,6 +20,7 @@ interface Props extends Product {
 }
 
 const ProductCard: React.FC<Props> = (props) => {
+  const [redeemNow, setRedeem] = useState(false);
   const { disabled, isSkeleton, name, category, cost, img, _id, isRedeemed } = props;
   const { isLoading, mutate: redeem, status } = useRedeem();
 
@@ -28,6 +29,20 @@ const ProductCard: React.FC<Props> = (props) => {
       toast(<Alert type={status} product={name} />, { type: status });
     }
   }, [status, name]);
+
+  let text = isSkeleton ? (
+    ''
+  ) : isLoading ? (
+    'Processing...'
+  ) : redeemNow ? (
+    `Redeem now!`
+  ) : isRedeemed ? (
+    'Redeemed'
+  ) : (
+    <>
+      {disabled ? 'You need' : 'Redeem for'} {disabled ? <InactiveIcon /> : <ActiveIcon />} {cost}
+    </>
+  );
 
   return (
     <AnimatePresence>
@@ -60,25 +75,28 @@ const ProductCard: React.FC<Props> = (props) => {
           </div>
         </ProductCardContainer>
         <CardButton
+          as={motion.button}
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.05 }}
           loading={isSkeleton}
           disabled={disabled || isRedeemed}
           disablePointer={disabled || isRedeemed}
-          onClick={(e) => {
+          onFocus={() => {
+            setRedeem(true);
+          }}
+          onBlur={() => {
+            setRedeem(false);
+          }}
+          onMouseEnter={() => {
+            setRedeem(true);
+          }}
+          onMouseLeave={() => {
+            setRedeem(false);
+          }}
+          onClick={() => {
             redeem(_id);
           }}>
-          <Text color='white'>
-            {isSkeleton ? (
-              ''
-            ) : isLoading ? (
-              'Processing...'
-            ) : isRedeemed ? (
-              'Redeemed'
-            ) : (
-              <>
-                {disabled ? 'You need' : 'Redeem for'} {disabled ? <InactiveIcon /> : <ActiveIcon />} {cost}
-              </>
-            )}
-          </Text>
+          <Text color='white'>{text}</Text>
         </CardButton>
       </ProductContainer>
     </AnimatePresence>

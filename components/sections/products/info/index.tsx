@@ -1,4 +1,5 @@
 import { RefObject } from 'react';
+import useProductsPagination from '../../../../hooks/useProductsPagination';
 import store from '../../../../store';
 import TextGradient from '../../../commons/text-gradient';
 import Pagination from '../../../pagination';
@@ -10,18 +11,16 @@ interface Props {
 }
 
 const ProductsInfo: React.FC<Props> = ({ refForward }) => {
-  const {
-    state: { pages },
-  } = store.useStore();
-  return pages ? (
+  const { length, isLoading, limit } = useProductsPagination();
+  return !isLoading ? (
     <ProductInfoContainer>
       <Text color='gray600'>
         <TextGradient type='brand'>
-          {((pages?.limit as number) * pages.currentPage).toString()} of {pages.pages}
+          {length.toString()} of {limit}
         </TextGradient>{' '}
         products
       </Text>
-      <Pagination refForward={refForward}/>
+      <Pagination refForward={refForward} />
     </ProductInfoContainer>
   ) : null;
 };

@@ -37,24 +37,37 @@ const Pagination: React.FC<Props> = ({ refForward }) => {
     }
   }, [dispatch, currentPage]);
 
+  let display = isLoading ? (
+    'Calculating...'
+  ) : (
+    <>
+      Page{' '}
+      <TextGradient type='brand'>
+        {currentPage} of {size && size / limit}
+      </TextGradient>
+    </>
+  );
+
   return (
     <PaginationContainer className='pagination' role='navigation' arial-label='Pagination of products'>
-      <ArrowContainer left arial-label='Previous page' onClick={() => {
-        handlePreviousPage();
-        refForward.current?.scrollIntoView();
-      }} disabled={!hasPreviousPages}>
+      <ArrowContainer
+        left
+        arial-label='Previous page'
+        onClick={() => {
+          handlePreviousPage();
+          refForward.current?.scrollIntoView();
+        }}
+        disabled={!hasPreviousPages}>
         <Arrow direction='left' color={!hasPreviousPages ? theme.colors.gray300 : theme.colors.gray500} />
       </ArrowContainer>
-      <Text color='gray600'>
-        Page{' '}
-        <TextGradient type='brand'>
-          {currentPage} of {size && size / limit}
-        </TextGradient>
-      </Text>
-      <ArrowContainer arial-label='Next Page' onClick={() => {
-        handleNextPage();
-        refForward.current?.scrollIntoView();
-      }} disabled={canGoToNextPage}>
+      <Text color='gray600'>{display}</Text>
+      <ArrowContainer
+        arial-label='Next Page'
+        onClick={() => {
+          handleNextPage();
+          refForward.current?.scrollIntoView();
+        }}
+        disabled={canGoToNextPage}>
         <Arrow direction='right' color={!canGoToNextPage ? theme.colors.gray500 : theme.colors.gray300} />
       </ArrowContainer>
     </PaginationContainer>
