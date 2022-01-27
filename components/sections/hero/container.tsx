@@ -57,4 +57,17 @@ export const HeroContainer = styled.div`
       margin-top: 0;
     }
   }
+
+  padding: 0px ${(p) => p.theme.spacing.sideMargin.desktop};
+
+  @media screen and (max-width: ${(p) => p.theme.bp.desktopMedium}) {
+     padding: 0px ${(p) => p.theme.spacing.sideMargin.desktopMedium};
+  }
+
+  @media screen and (max-width: ${(p) => p.theme.bp.tablet}) {
+     padding: 0px ${(p) => p.theme.spacing.sideMargin.desktopMedium};
+  }
+  @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+     padding: 0px ${(p) => p.theme.spacing.sideMargin.mobile};
+  }
 `;
