@@ -5,10 +5,13 @@ import Filters from '../../filter';
 import ProductList from '../../list/product-list';
 import MediumTitle from '../../titles/medium';
 import ProductsInfo from './info';
+import { useRef } from 'react';
 
 const Products: React.FC = () => {
+  const ref = useRef(null);
+  
   return (
-    <ProductsContainer role='main'>
+    <ProductsContainer role='main' ref={ref}>
       <MainContainer>
         <header>
           <MediumTitle as='h2'>
@@ -17,7 +20,7 @@ const Products: React.FC = () => {
         </header>
         <Filters />
         <ProductList />
-        <ProductsInfo />
+        <ProductsInfo refForward={ref}/>
       </MainContainer>
     </ProductsContainer>
   );

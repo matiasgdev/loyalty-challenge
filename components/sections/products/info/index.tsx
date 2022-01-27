@@ -1,10 +1,15 @@
+import { RefObject } from 'react';
 import store from '../../../../store';
 import TextGradient from '../../../commons/text-gradient';
 import Pagination from '../../../pagination';
 import Text from '../../../texts/text';
 import { ProductInfoContainer } from './container';
 
-const ProductsInfo = () => {
+interface Props {
+  refForward: RefObject<HTMLElement>;
+}
+
+const ProductsInfo: React.FC<Props> = ({ refForward }) => {
   const {
     state: { pages },
   } = store.useStore();
@@ -16,7 +21,7 @@ const ProductsInfo = () => {
         </TextGradient>{' '}
         products
       </Text>
-      <Pagination />
+      <Pagination refForward={refForward}/>
     </ProductInfoContainer>
   ) : null;
 };

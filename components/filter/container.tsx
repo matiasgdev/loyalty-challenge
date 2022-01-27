@@ -23,6 +23,7 @@ export const FiltersContainer = styled.div`
   }
 
   .pagination-wrapper {
+    align-self: flex-start;
     flex-shrink: 0;
   }
 

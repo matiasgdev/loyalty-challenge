@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import React, { RefObject, useCallback, useMemo } from 'react';
 import { useProductsPagination } from '../../hooks/useProductsPagination';
 import store from '../../store';
 import { setPageAction } from '../../store/pages/actions';
@@ -8,7 +8,10 @@ import Arrow from '../commons/arrow-btn';
 import TextGradient from '../commons/text-gradient';
 import Text from '../texts/text';
 
-const Pagination = () => {
+interface Props {
+  refForward: RefObject<HTMLElement>;
+}
+const Pagination: React.FC<Props> = ({ refForward }) => {
   let {
     dispatch,
     state: {
@@ -26,13 +29,15 @@ const Pagination = () => {
   const handleNextPage = useCallback(() => {
     dispatch(setPageAction(currentPage + 1));
     fetchNextPage();
-  }, [dispatch, fetchNextPage, currentPage]);
+    refForward.current?.scrollIntoView();
+  }, [dispatch, fetchNextPage, currentPage, refForward]);
 
   const handlePreviousPage = useCallback(() => {
     if (currentPage > 1) {
       dispatch(setPageAction(currentPage - 1));
+      refForward.current?.scrollIntoView();
     }
-  }, [dispatch, currentPage]);
+  }, [dispatch, currentPage, refForward]);
 
   return (
     <PaginationContainer className='pagination' role='navigation' arial-label='Pagination of products'>

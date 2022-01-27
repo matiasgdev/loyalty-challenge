@@ -13,7 +13,7 @@ const SortByFilter = () => {
   return (
     <SortByFilterContainer>
       <Text color='gray600' className='category-title'>
-        Sorted by:
+        Sort by:
       </Text>
       <section className='controllers'>
         {sortByOptions.map((option) => (
