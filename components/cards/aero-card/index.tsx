@@ -21,9 +21,9 @@ const AeroCard: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
         <AeroCardContainer
           as={motion.div}
           data-testid='aero-card'
-          animate={{ x: 0, opacity: 1 }}
-          initial={{ x: '100vw', opacity: 0 }}
-          exit={{ x: '100vw', opacity: 0 }}>
+          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: '-100vw', opacity: 0 }}
+          exit={{ y: '-100vw', opacity: 0 }}>
           <div className='header'>
             <Text color='gray900'>Add Balance</Text>
           </div>
