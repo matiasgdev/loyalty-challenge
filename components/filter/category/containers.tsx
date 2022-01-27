@@ -46,7 +46,7 @@ export const OptionContainer = styled.div`
     width: 100%;
     padding: 12px 24px;
 
-    &:hover {
+    &:hover, &:focus {
       background: ${(p) => p.theme.colors.gray100};
     }
   }

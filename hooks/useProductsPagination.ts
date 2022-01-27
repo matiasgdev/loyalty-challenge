@@ -6,7 +6,7 @@ import { setOptions } from '../store/products/actions';
 import { getOptions } from '../utils/get-options';
 import useMediaQuery from './useMediaQuery';
 
-export const useProductsPagination = () => {
+export const useProductsPagination = (active = false) => {
   const { dispatch } = store.useStore();
   const isMobile = useMediaQuery(1024);
   const limit = isMobile ? 8 : 16;
@@ -18,6 +18,7 @@ export const useProductsPagination = () => {
       dispatch(setPages(size));
       dispatch(setOptions(options));
     },
+    enabled: active
   });
 };
 

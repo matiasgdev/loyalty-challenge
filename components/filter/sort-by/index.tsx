@@ -15,11 +15,11 @@ const SortByFilter = () => {
       <Text color='gray600' className='category-title'>
         Sorted by:
       </Text>
-      <div className='controllers'>
+      <section className='controllers'>
         {sortByOptions.map((option) => (
           <PriceFilterButton key={option.value} selected={option.title === selectedSortBy} title={option.title} />
         ))}
-      </div>
+      </section>
     </SortByFilterContainer>
   );
 };

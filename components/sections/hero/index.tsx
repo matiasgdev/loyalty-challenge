@@ -15,6 +15,7 @@ const Hero = () => {
           <TextSection />
           <HeroButton
             as={motion.button}
+            tabIndex={2}
             animate={{ scale: 1 }}
             initial={{ scale: 0 }}
             transition={{

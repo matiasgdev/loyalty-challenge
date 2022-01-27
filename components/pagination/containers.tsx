@@ -30,7 +30,7 @@ export const ArrowContainer = styled.button<{ left?: boolean }>`
   
   transition: background .1s ease-in-out;
   
-  &:hover:enabled, &:active:enabled {
+  &:hover, &:focus {
     background: ${(p) => p.theme.bgColors.light2};
   }
 

@@ -20,7 +20,8 @@ const AeroCard: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
       {isOpen && (
         <AeroCardContainer
           as={motion.div}
-          animate={{ x: 0, opacity: 1, x: 0 }}
+          data-testid='aero-card'
+          animate={{ x: 0, opacity: 1 }}
           initial={{ x: '100vw', opacity: 0 }}
           exit={{ x: '100vw', opacity: 0 }}>
           <div className='header'>

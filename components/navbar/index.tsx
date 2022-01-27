@@ -10,7 +10,7 @@ function Navbar() {
     <NavbarContainer>
       <MainContainer>
         <Image
-          alt='aerolab-logo'
+          alt='Aerolab Logo'
           src={`/assets/icons/aerolab-logo-${isTablet ? '2' : '1'}.svg`}
           width={isTablet ? '48' : '126'}
           height='48'
