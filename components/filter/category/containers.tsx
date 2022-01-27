@@ -67,6 +67,7 @@ export const SelectController = styled.div`
 
   height: 59px;
   width: 100%;
+  
 
   background: ${(p) => p.theme.colors.white};
   color: ${(p) => p.theme.colors.gray600};
@@ -74,4 +75,18 @@ export const SelectController = styled.div`
   border: 1px solid ${(p) => p.theme.colors.gray300};
   border-radius: 16px;
   cursor: pointer;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    width: 0;
+    height: 0;
+    border: 8px solid ${(p) => p.theme.colors.gray600};
+
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+  }
 `;

@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 import { navVariants } from '../../../misc/animations';
 
 function AeroCoin() {
-  const { data: user } = useUser();
+  const { data: user, isLoading } = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const isTablet = useMediaQuery(1024);
   const handleOnClick = useCallback(() => setIsOpen((prev) => !prev), []);
@@ -36,7 +36,7 @@ function AeroCoin() {
             width={isTablet ? '24' : '32'}
           />
           <Text>
-            <TextGradient type='brand'>{user?.points}</TextGradient>
+            <TextGradient type='brand'>{isLoading ? '...' : user?.points}</TextGradient>
           </Text>
           <div className='arrow-container'>
             <Arrow direction={isOpen ? 'bottom' : 'top'} />
