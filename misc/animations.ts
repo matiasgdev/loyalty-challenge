@@ -13,7 +13,7 @@ export const skeleton = keyframes`
 export const navVariants = {
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       type: 'spring',
       stiffness: 70,
@@ -21,6 +21,6 @@ export const navVariants = {
   },
   hidden: (type: string) => ({
     opacity: 0,
-    x: type === 'logo' ? '-100vw' : '100vw',
+    y: type === 'logo' ? '-100vw' : '-20vh',
   }),
 };
