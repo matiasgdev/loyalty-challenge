@@ -14,14 +14,14 @@ import Alert from '../../commons/alert';
 import ImageSkeleton from '../../commons/image-skeleton';
 
 interface Props extends Product {
-  disabled?: boolean;
+  notEnoughPoints?: boolean;
   isSkeleton?: boolean;
   isRedeemed?: boolean;
 }
 
 const ProductCard: React.FC<Props> = (props) => {
   const [redeemNow, setRedeem] = useState(false);
-  const { disabled, isSkeleton, name, category, cost, img, _id, isRedeemed } = props;
+  const { notEnoughPoints, isSkeleton, name, category, cost, img, _id, isRedeemed } = props;
   const { isLoading, mutate: redeem, status } = useRedeem();
 
   useEffect(() => {
@@ -36,11 +36,15 @@ const ProductCard: React.FC<Props> = (props) => {
     'Processing...'
   ) : redeemNow ? (
     `Redeem now!`
+  ) : notEnoughPoints ? (
+    <>
+       You need <InactiveIcon /> {cost}
+    </>
   ) : isRedeemed ? (
     'Redeemed'
   ) : (
     <>
-      {disabled ? 'You need' : 'Redeem for'} {disabled ? <InactiveIcon /> : <ActiveIcon />} {cost}
+      Redeem for <ActiveIcon /> {cost}
     </>
   );
 
@@ -79,8 +83,8 @@ const ProductCard: React.FC<Props> = (props) => {
           initial={{ scale: 1 }}
           whileHover={{ scale: 1.05 }}
           loading={isSkeleton}
-          disabled={disabled || isRedeemed}
-          disablePointer={disabled || isRedeemed}
+          disabled={notEnoughPoints || isRedeemed || isLoading}
+          disablePointer={notEnoughPoints || isRedeemed || isLoading}
           onFocus={() => {
             setRedeem(true);
           }}

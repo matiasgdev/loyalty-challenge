@@ -27,7 +27,7 @@ const ProductList: React.FC = () => {
             isSkeleton={isLoading}
             {...product}
             isRedeemed={filteredProducts && history ? isProductRedemeed(product, history) : false}
-            disabled={isLoading || (user && canRedeemProduct(product, user?.points))}
+            notEnoughPoints={isLoading || (user && canRedeemProduct(product, user?.points))}
           />
         ))}
       </ProductListContainer>
