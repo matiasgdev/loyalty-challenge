@@ -7,4 +7,6 @@ A loyalty challenge base on Aerolab technical challenge made in React with Nextj
 - Pagination
 - and more
 
+URL deployed: https://loyalty-challenge.vercel.app/
+
 A lot of functionality was made in terms of demo (:
