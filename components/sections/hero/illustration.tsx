@@ -16,9 +16,12 @@ const IllustrationContainer = styled.div`
   }
 
   @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
+    position: absolute;
+    top: 0;
     padding-top: 3em;
     width: 100vw;
     align-items: flex-end;
+
   }
 `;
 

@@ -50,10 +50,10 @@ export const HeroContainer = styled.div`
 
 
   @media screen and (max-width: ${(p) => p.theme.bp.mobile}) {
-    margin-bottom: 6em;
-    height: 70vh;
-
+    height: 100%;
     .illustration {
+      position: relative;
+      height: 150px;
       margin-top: 0;
     }
   }

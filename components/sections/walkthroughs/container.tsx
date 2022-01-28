@@ -29,7 +29,7 @@ export const WalkthroughContainer = styled.section`
     height: min-content;
     margin-bottom: 160px;
 
-    padding: 147px 18px 32px 18px;
+    padding: 137px 18px 32px 18px;
     background-size: 100% 100%;
     background-position: 0px 0px;
     
