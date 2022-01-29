@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { QueryClient, dehydrate } from 'react-query';
 import store from '../store';
 import Navbar from '../components/navbar';
 import Hero from '../components/sections/hero';
@@ -7,6 +8,8 @@ import Products from '../components/sections/products';
 import Footer from '../components/sections/footer';
 import BackgroundWave from '../components/commons/background-wave';
 import { initStateWith } from '../store/global';
+import { api } from '../services/api';
+import { User } from '../types/User';
 
 const StoreProvider = store.StoreProvider;
 
@@ -35,8 +38,13 @@ const Home = () => {
 };
 
 export const getServerSideProps = async () => {
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery<User>('user', api.getUser);
+
   return {
-    props: {},
+    props: {
+      rehydratedState: dehydrate(queryClient)
+    },
   };
 };
 

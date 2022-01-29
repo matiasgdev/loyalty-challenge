@@ -12,7 +12,7 @@ import { orderProductsBy } from '../utils/order-products-by';
 import useUserHistory from './useUserHistory';
 
 export const useProductsPagination = (active = false) => {
-  const { data: history, isLoading: isLoadingHistory } = useUserHistory();
+  const { data: history, isLoading: isLoadingHistory } = useUserHistory(active);
   let {
     state: {
       pages: { currentPage, limit },
