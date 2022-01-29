@@ -9,12 +9,16 @@ function Navbar() {
   return (
     <NavbarContainer>
       <MainContainer>
-        <Image
-          alt='Aerolab Logo'
-          src={`/assets/icons/aerolab-logo-${isTablet ? '2' : '1'}.svg`}
-          width={isTablet ? '48' : '126'}
-          height='48'
-        />
+        <div
+          className="image-container"
+        >
+          <Image
+            alt='Aerolab Logo'
+            src={`/assets/icons/aerolab-logo-${isTablet ? '2' : '1'}.svg`}
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
         <AeroCoin />
       </MainContainer>
     </NavbarContainer>
